@@ -18,6 +18,7 @@ License: [BSD](https://opensource.org/licenses/bsd-license.php)
 Additional changes to allow list-wide attributes by Paul Melis, 2022
 """
 
+import xml.etree.ElementTree as ET
 from markdown import Extension
 from markdown.treeprocessors import Treeprocessor
 import re
@@ -62,6 +63,43 @@ def get_attrs(str):
 def isheader(elem):
     return elem.tag in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
 
+def _dump_tree(level, elem):
+    extra = []
+    if elem.text:
+        extra.append('text=[%s]' % repr(elem.text))
+    if elem.tail:
+        extra.append('tail=[%s]' % repr(elem.tail))
+    e = ''
+    if len(extra) > 0:
+        e = '{' + ', '.join(extra) + '}'
+        
+    print('%s%s %s   %s' % (' '*(level*4), elem.tag, e, elem))
+    
+    if len(elem):
+        for child in elem:
+            _dump_tree(level+1, child)
+    
+def dump_tree(doc):        
+    for elem in doc.findall('.'):
+        _dump_tree(0, elem)
+
+def _gather_parents(parents, parent, elem):
+    #print(parent, elem, elem.tag, 'text='+repr(elem.text), 'tail='+repr(elem.tail))
+    if parent is not None:
+        parents[elem] = parent
+    tag = elem.tag
+    if tag in ['ol', 'ul', 'dl', 'table']:
+        parent = elem
+    for child in elem:
+        _gather_parents(parents, parent, child)        
+    return parents
+
+def gather_parents(doc):
+    parents = {}
+    for elem in doc.findall('.'):
+        _gather_parents(parents, None, elem)
+    return parents
+    
 
 class AttrListTreeprocessor(Treeprocessor):
 
@@ -76,11 +114,10 @@ class AttrListTreeprocessor(Treeprocessor):
                          r'\:\-\.0-9\u00b7\u0300-\u036f\u203f-\u2040]+')
 
     def run(self, doc):
-        li_parents = {}
+        #dump_tree(doc)
+        parents = gather_parents(doc)
         for elem in doc.iter():
-            if elem.tag in ['ol', 'ul']:
-                for child in elem:
-                    li_parents[child] = elem
+            parent = parents[elem] if elem in parents else None
             if self.md.is_block_level(elem.tag):
                 # Block level: check for attrs on last line of text
                 RE = self.BLOCK_RE
@@ -99,25 +136,25 @@ class AttrListTreeprocessor(Treeprocessor):
                         # use tail of last child. no ul or ol.
                         m = RE.search(elem[-1].tail)
                         if m:
-                            self.assign_attrs(elem, m.group(1))
+                            self.assign_attrs(elem, m.group(1), parent)
                             elem[-1].tail = elem[-1].tail[:m.start()]
                     elif pos is not None and pos > 0 and elem[pos-1].tail:
                         # use tail of last child before ul or ol
                         m = RE.search(elem[pos-1].tail)
                         if m:
-                            self.assign_attrs(elem, m.group(1))
+                            self.assign_attrs(elem, m.group(1), parent)
                             elem[pos-1].tail = elem[pos-1].tail[:m.start()]
                     elif elem.text:
                         # use text. ul is first child.
                         m = RE.search(elem.text)
                         if m:
-                            self.assign_attrs(elem, m.group(1))
+                            self.assign_attrs(elem, m.group(1), parent)
                             elem.text = elem.text[:m.start()]
                 elif len(elem) and elem[-1].tail:
                     # has children. Get from tail of last child
                     m = RE.search(elem[-1].tail)
                     if m:
-                        self.assign_attrs(elem, m.group(1))
+                        self.assign_attrs(elem, m.group(1), parent)
                         elem[-1].tail = elem[-1].tail[:m.start()]
                         if isheader(elem):
                             # clean up trailing #s
@@ -126,9 +163,6 @@ class AttrListTreeprocessor(Treeprocessor):
                     # no children. Get from text.
                     m = RE.search(elem.text)
                     if m:
-                        parent = None
-                        if elem.tag == 'li' and elem in li_parents:
-                            parent = li_parents[elem]
                         self.assign_attrs(elem, m.group(1), parent)
                         elem.text = elem.text[:m.start()]
                         if isheader(elem):
@@ -139,11 +173,12 @@ class AttrListTreeprocessor(Treeprocessor):
                 if elem.tail:
                     m = self.INLINE_RE.match(elem.tail)
                     if m:
-                        self.assign_attrs(elem, m.group(1))
+                        self.assign_attrs(elem, m.group(1), parent)
                         elem.tail = elem.tail[m.end():]
 
     def assign_attrs(self, elem, attrs, parent=None):
         """ Assign attrs to element. """
+        #print('assign_attrs(%s, %s, %s)' % (elem, attrs, parent))
         apply_elem = elem
         for k, v in get_attrs(attrs):
             if k == '.':
@@ -154,7 +189,7 @@ class AttrListTreeprocessor(Treeprocessor):
                 else:
                     apply_elem.set('class', v)
             elif k == '^' and parent is not None:
-                # set on parent from now on
+                # set remaining attributes on parent
                 apply_elem = parent
             else:
                 # assign attr k with v
@@ -162,7 +197,7 @@ class AttrListTreeprocessor(Treeprocessor):
 
     def sanitize_name(self, name):
         """
-        Sanitize name as 'an XML Name, minus the ":"'.
+        Sanitize name as 'an XML Name, minus the ":"'
         See https://www.w3.org/TR/REC-xml-names/#NT-NCName
         """
         return self.NAME_RE.sub('_', name)
@@ -170,7 +205,7 @@ class AttrListTreeprocessor(Treeprocessor):
 
 class PMAttrListExtension(Extension):
     def extendMarkdown(self, md):
-        md.treeprocessors.register(AttrListTreeprocessor(md), 'attr_list', 8)
+        md.treeprocessors.register(AttrListTreeprocessor(md), 'pm_attr_list', 8)
         md.registerExtension(self)
 
 
