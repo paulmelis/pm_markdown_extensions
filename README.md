@@ -26,7 +26,7 @@ Any attributes following the marker are set on the parent list/table in the HTML
 
 Continuing list numbering, setting list class and ID:
 
-```
+```md
 First do these steps:
     
 1. Item
@@ -61,7 +61,7 @@ HTML:
 
 Works for nestes lists as well, e.g.
 
-```
+```md
 * Item 1
 { ^ .toplist }
     3. Third!
@@ -89,7 +89,7 @@ turns into
 
 Table:
 
-```
+```md
 Name      | Value 
 ----------|-------
 Something | Yes { #yes ^ .table }
@@ -121,7 +121,7 @@ becomes
 
 Definition list:
 
-```html
+```md
 Apple { #apple ^ #fruit }
 :   Pomaceous fruit of plants of the genus Malus in
     the family Rosaceae.
@@ -132,7 +132,7 @@ Orange { #orange ^ .deflist }
 
 becomes
 
-```
+```html
 <dl class="deflist" id="fruit">
 <dt id="apple">Apple</dt>
 <dd>Pomaceous fruit of plants of the genus Malus in
