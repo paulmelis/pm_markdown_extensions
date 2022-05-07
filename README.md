@@ -178,9 +178,9 @@ markdown_extensions:
 * This would make a great addition to include in Python-Markdown's
 attr_list extension itself. Can you ask to include it?
 
-    Requests to add a feature to control list-wide attributes
+    Requests to add a feature to control list-wide or table-wide attributes
 have been made at the Python-Markdown project over many years since 2013 
-([227](https://github.com/Python-Markdown/markdown/issues/227), 
+(see [227](https://github.com/Python-Markdown/markdown/issues/227), 
 [312](https://github.com/Python-Markdown/markdown/issues/312),
 [505](https://github.com/Python-Markdown/markdown/issues/505),
 [594](https://github.com/Python-Markdown/markdown/issues/594),
