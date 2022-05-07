@@ -1,15 +1,16 @@
 # pm_attr_list
 
 This is a modified version of Python-Markdown's
-attr_list extension, to allow list-wide and table-wide attributes to
+`attr_list` extension, to allow list-wide and table-wide attributes to
 be set. It specifically aims to lift the [limitation](https://python-markdown.github.io/extensions/attr_list/#limitations)
-or `attr_list` that attributes cannot be set on implied elements (i.e.
-elements that are not explicitly specified in markdown, such as the table start).
+of `attr_list` that attributes cannot be set on implied elements (i.e.
+elements that are not explicitly specified in markdown, such as a table start).
 
-By supporting list- and table-wide attributes several useful thing become possible, for example
+By supporting list- and table-wide attributes several useful things become possible, for example
 
 * Starting a numbered list at a specific number
-* Setting a custom attributes on an output `<ol>`, `<ul>`, `<dl>` or `<table>` tag
+* Setting a specific class on a single list/table, as an exception to the default class
+* Any other custom attributes on output `<ol>`, `<ul>`, `<dl>` or `<table>` HTML tags
 
 This extension only applies minimal code changes to the original `attr_list` extension,
 so existing functionality of that extension should still be available.
