@@ -181,6 +181,6 @@ have been made at the Python-Markdown project over many years since 2013
 [600](https://github.com/Python-Markdown/markdown/issues/600)
 [668](https://github.com/Python-Markdown/markdown/issues/668), 
 [1251](https://github.com/Python-Markdown/markdown/pull/1252)),
-but developer feedback has albeen been very negative to add it. Hence this
+but developer feedback has always been very negative to add it. Hence this
 unofficial extension.
 
