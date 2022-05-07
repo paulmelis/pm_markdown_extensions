@@ -17,6 +17,10 @@ so existing functionality of that extension should still be available.
 However, for some more exotic markdown input the code could still be buggy, 
 please report here if you find any issues.
 
+As this extension does slightly more work than the original `attr_list` it
+is somewhat slower. Using a simple test (`performance.py`) the difference appears
+to be fairly small though, around 3% extra time.
+
 ## Usage
 
 Add attributes to your markdown as usual (as described [here](https://python-markdown.github.io/extensions/attr_list)).
