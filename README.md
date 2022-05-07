@@ -45,7 +45,7 @@ Don't forget to finish with these steps:
 
 HTML:
 
-```
+```html
 <p>First do these steps:</p>
 <ol class="mylist" id="list1">
 <li class="myitem">Item</li>
@@ -74,7 +74,7 @@ Works for nestes lists as well, e.g.
 
 turns into
 
-```
+```html
 <ul class="toplist">
 <li>Item 1<ol class="sublist" start="3">
 <li>Third!</li>
@@ -98,7 +98,7 @@ Other     | No { #no }
 
 becomes
 
-```
+```html
 <table class="table">
 <thead>
 <tr>
@@ -121,7 +121,7 @@ becomes
 
 Definition list:
 
-```
+```html
 Apple { #apple ^ #fruit }
 :   Pomaceous fruit of plants of the genus Malus in
     the family Rosaceae.
