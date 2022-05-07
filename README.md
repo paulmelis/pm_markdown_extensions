@@ -172,8 +172,8 @@ markdown_extensions:
 
     No, this is currently not supported. It would be a bit tricky to provide,
     as it would mean requiring syntax to differentiate between "set on parent table"
-    and "set on parent row". Perhaps a `<` could serve for that, but it's currently
-    not implemented.
+    and "set on parent row". Perhaps a `<` marker could serve for that, but it's 
+    currently not implemented.
 
 * This would make a great addition to include in Python-Markdown's
 attr_list extension itself. Can you ask to include it?
