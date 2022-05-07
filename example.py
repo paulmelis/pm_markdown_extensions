@@ -18,7 +18,7 @@ First do these steps:
 Don't forget to finish with these steps:
 
 4. Item
-{ ^ start=4 color=red }
+{ ^ start=4 .important }
 5. Especially the last one!
 { style="font-style: bold" }
 """)

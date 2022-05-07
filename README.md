@@ -38,7 +38,7 @@ First do these steps:
 Don't forget to finish with these steps:
 
 4. Item
-{ ^ start=4 color=red }
+{ ^ start=4 .important }
 5. Especially the last one!
 { style="font-style: bold" }
 ```
@@ -53,7 +53,7 @@ HTML:
 <li>Item</li>
 </ol>
 <p>Don't forget to finish with these steps:</p>
-<ol color="red" start="4">
+<ol class="important" start="4">
 <li>Item</li>
 <li style="font-style: bold">Especially the last one!</li>
 </ol>
