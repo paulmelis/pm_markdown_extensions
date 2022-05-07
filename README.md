@@ -179,7 +179,7 @@ have been made at the Python-Markdown project over many years since 2013
 [312](https://github.com/Python-Markdown/markdown/issues/312),
 [505](https://github.com/Python-Markdown/markdown/issues/505),
 [594](https://github.com/Python-Markdown/markdown/issues/594),
-[600](https://github.com/Python-Markdown/markdown/issues/600)
+[600](https://github.com/Python-Markdown/markdown/issues/600),
 [668](https://github.com/Python-Markdown/markdown/issues/668), 
 [1251](https://github.com/Python-Markdown/markdown/pull/1252)),
 but developer feedback has always been very negative to add it. Hence this
