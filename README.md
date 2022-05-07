@@ -170,7 +170,7 @@ markdown_extensions:
     and "set on parent row".
 
 * This would make a great addition to include in Python-Markdown's
-attr_list extension itself! Can you ask to include it?
+attr_list extension itself. Can you ask to include it?
 
     Requests to add a feature to control list-wide attributes
 have been made at the Python-Markdown project over many years since 2013 
@@ -184,3 +184,7 @@ have been made at the Python-Markdown project over many years since 2013
 but developer feedback has always been very negative to add it. Hence this
 unofficial extension.
 
+## License
+
+The license for `pm_attr_list.py` is BSD-2, just like the original license
+as listed at the top comment in the [original file](https://github.com/Python-Markdown/markdown/raw/2164c4b4752b9061c742326ea0413719333058fc/markdown/extensions/attr_list.py).

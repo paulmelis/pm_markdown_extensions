@@ -15,7 +15,8 @@ All changes Copyright 2011-2014 The Python Markdown Project
 
 License: [BSD](https://opensource.org/licenses/bsd-license.php)
 
-Additional changes to allow list-wide attributes by Paul Melis, 2022
+Additional changes to allow list-wide and table-wide attributes 
+by Paul Melis, 2022
 """
 
 import xml.etree.ElementTree as ET
