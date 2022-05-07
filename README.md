@@ -163,22 +163,22 @@ markdown_extensions:
 
 ## FAQ
 
-* I cannot set a list-wide attribute on a nested list! Is this a bug?
+* Can you use this to set attributes on a table row, or similar element?
 
-Not, this is a known limitation. Adding support for nested lists
-would take a bit more work and is probably not as useful as for top-level lists.
-
+    A. No, this is currently not supported. It would be a bit tricky to provide,
+    as it would mean requiring syntax to differentiate between "set on parent table"
+    and "set on parent row".
 
 * This would make a great addition to include in Python-Markdown's
 attr_list extension itself! Can you ask to include it?
 
-Requests to add a feature to control list-wide attribute
+    A. Requests to add a feature to control list-wide attributes
 have been made at the Python-Markdown project over many years since 2013 
 ([227](https://github.com/Python-Markdown/markdown/issues/227), 
 [312](https://github.com/Python-Markdown/markdown/issues/312),
 [505](https://github.com/Python-Markdown/markdown/issues/505),
 [594](https://github.com/Python-Markdown/markdown/issues/594),
-[600[https://github.com/Python-Markdown/markdown/issues/600)
+[600]https://github.com/Python-Markdown/markdown/issues/600)
 [668](https://github.com/Python-Markdown/markdown/issues/668), [1251](https://github.com/Python-Markdown/markdown/pull/1252)),
 but developer feedback has albeen been very negative to add it. Hence this
 unofficial extension.
