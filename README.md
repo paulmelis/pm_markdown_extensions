@@ -9,14 +9,20 @@ elements that are not explicitly specified in markdown, such as the table start)
 By supporting list- and table-wide attributes several useful thing become possible, for example
 
 * Starting a numbered list at a specific number
-* Setting a custom attributes on an output `<ol>`, `<ul>`, `<table>` or `<dl>` tag
+* Setting a custom attributes on an output `<ol>`, `<ul>`, `<dl>` or `<table>` tag
 
 This extension only applies minimal code changes to the original `attr_list` extension,
 so existing functionality of that extension should still be available.
 However, for some more exotic markdown input the code could still be buggy, 
 please report here if you find any issues.
 
-## Examples
+## Usage
+
+Add attributes to your markdown as usual (as described [here](https://python-markdown.github.io/extensions/attr_list)).
+A new marker `^` is available that you can include in the attribute definition.
+Any attributes following the marker are set on the parent list/table in the HTML output.
+
+### Examples
 
 Continuing list numbering, setting list class and ID:
 
