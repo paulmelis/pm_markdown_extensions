@@ -149,21 +149,29 @@ the family Rosaceae.</dd>
 
 ## Installation
 
-This module is not registered on PyPI, hence to use it place the
-file `pm_attr_list.py` in a location where the Python interpreter
-can find it (and thus `import pm_attr_list` succeeds).
+This module is not registered on PyPI, but you can still install
+it using pip by using:
+
+```
+pip install <path-to-this-repo-checkout>
+```
+
+This will also work, for example, when working with MkDocs and you use a virtualenv 
+to install all its dependencies. Just as long as the virtualenv is active when calling `pip`
+installation should work automatically and you enable the extensions as shown below.
 
 See `example.py` for how to use with Python-Markdown directly.
 
 ### MkDocs
 
-Adding `pm_attr_list` to `mkdocs.yml` instead of `attr_list` should work out 
-of the box, assuming the `pm_attr_list` module can be found as mentioned above. E.g.
+Adding `pm_attr_list` and/or `pm_markdown_captions` to `mkdocs.yml` instead of `attr_list` should work out 
+of the box, assuming the modules can be found as mentioned above. E.g.
 
 ```
 # mkdocs.yml
 markdown_extensions:
   - pm_attr_list
+  - pm_markdown_captions
 ```
 
 ## FAQ
@@ -194,3 +202,7 @@ unofficial extension.
 
 The license for `pm_attr_list.py` is BSD-2, just like the original license
 as listed at the top comment in the [original file](https://github.com/Python-Markdown/markdown/raw/2164c4b4752b9061c742326ea0413719333058fc/markdown/extensions/attr_list.py).
+
+The file `pm_markdown_captions.py` is based on `markdown_captions.py`
+from https://github.com/Evidlo/markdown_captions, which is license
+GNU GPL.
