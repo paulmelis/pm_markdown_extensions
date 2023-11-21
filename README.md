@@ -150,9 +150,13 @@ the family Rosaceae.</dd>
 ## Installation
 
 This module is not registered on PyPI, but you can still install
-it using pip by using:
+it using pip by using either one of these commands:
 
 ```
+# Install from github repo
+pip install -e git+https://github.com/paulmelis/pm_attr_list#egg=pm-markdown-extensions
+
+# Install from locally checked out repo
 pip install <path-to-this-repo-checkout>
 ```
 
