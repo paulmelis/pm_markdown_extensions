@@ -1,4 +1,4 @@
-# pm_attr_list
+# pm_attr_list and pm_markdown_captions
 
 This is a modified version of Python-Markdown's
 `attr_list` extension, to allow list-wide and table-wide attributes to
@@ -20,6 +20,10 @@ please report here if you find any issues.
 As this extension does slightly more work than the original `attr_list` it
 is somewhat slower. Using a simple test (`performance.py`) the difference appears
 to be fairly small though, around 3% extra time.
+
+Note that this repo also includes a modified version of `markdown_captions.py`
+from https://github.com/Evidlo/markdown_captions, called `pm_markdown_captions`, 
+as we need to special-case the captions for `pm_attr_list`, unfortunately.
 
 ## Usage
 
@@ -154,7 +158,7 @@ it using pip by using either one of these commands:
 
 ```
 # Install from github repo
-pip install -e git+https://github.com/paulmelis/pm_attr_list#egg=pm-markdown-extensions
+pip install -e git+https://github.com/paulmelis/pm_attr_list#egg=pm_markdown_extensions
 
 # Install from locally checked out repo
 pip install <path-to-this-repo-checkout>
@@ -191,7 +195,7 @@ markdown_extensions:
 attr_list extension itself. Can you ask to include it?
 
     Requests to add a feature to control list-wide or table-wide attributes
-have been made at the Python-Markdown project over many years since 2013 
+have been made at the Python-Markdown project over many years since **2013**
 (see [227](https://github.com/Python-Markdown/markdown/issues/227), 
 [312](https://github.com/Python-Markdown/markdown/issues/312),
 [505](https://github.com/Python-Markdown/markdown/issues/505),
