@@ -158,7 +158,7 @@ it using pip by using either one of these commands:
 
 ```
 # Install from github repo
-pip install -e git+https://github.com/paulmelis/pm_attr_list#egg=pm_markdown_extensions
+pip install -e git+https://github.com/paulmelis/pm_markdown_extensions#egg=pm_markdown_extensions
 
 # Install from locally checked out repo
 pip install <path-to-this-repo-checkout>
